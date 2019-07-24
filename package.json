@@ -1,5 +1,5 @@
 {
-  "name": "moriscript",
+  "name": "babel-plugins-lwz",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.3"
+    "@babel/core": "^7.5.5"
   }
 }

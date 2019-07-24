@@ -1,6 +1,6 @@
 var fs = require('fs');
 var path = require('path');
-var babel = require('babel-core');
+var babel = require('@babel/core');
 
 var modulePlugin = require('./src/modulePlugin');
 var pipePlugin = require('./src/pipePlugin');
