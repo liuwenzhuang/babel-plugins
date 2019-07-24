@@ -6,14 +6,18 @@ module.exports = function ({ types: t }) {
   return {
     visitor: {
       BinaryExpression: function (path) {
-        let left = path.node.left;
-        const right = path.node.right;
+        const { node } = path;
+        if (!node) return;
+        if (node.operator !== '|') return;  // 只处理"|"操作
+        let left = node.left;
+        const right = node.right;
         const rightValues = [];
         rightValues.push(right);
         while(true) {
           if (!t.isBinaryExpression(left)) {
             break;
           }
+          if (left.operator !== '|') return;  // 只处理"|"操作
           rightValues.unshift(left.right);                 // 保存右侧值
           left = left.left;                                // 最左边的值，即最内层参数
         }
@@ -25,7 +29,6 @@ module.exports = function ({ types: t }) {
             replaceExpr = t.callExpression(item, [replaceExpr]);
           }
         });
-        console.log(replaceExpr);
         path.replaceWith(replaceExpr);
       }
     }
