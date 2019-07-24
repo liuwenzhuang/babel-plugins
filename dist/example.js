@@ -11,3 +11,10 @@ jane('text');
 double('bala');
 
 const doubleAndSquare = x => square(double(x));
+
+const fooAndBar = x => x & foo | bar;
+
+import Toast from 'antd';
+import Button from "antd/es/Button";
+import Table from "antd/es/Table";
+import Text, { Comment } from './Text';

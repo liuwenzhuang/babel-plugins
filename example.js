@@ -18,3 +18,7 @@ mori.assign(obj, 'gender', 'male');
 'bala' | double
 
 const doubleAndSquare = x => x | double | square
+const fooAndBar = x => x & foo | bar
+
+import Toast, { Button as Button1, Table } from 'antd';
+import Text, { Comment } from './Text';

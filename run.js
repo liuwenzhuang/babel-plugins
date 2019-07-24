@@ -4,6 +4,7 @@ var babel = require('@babel/core');
 
 var modulePlugin = require('./src/modulePlugin');
 var pipePlugin = require('./src/pipePlugin');
+var importPlugin = require('./src/importPlugin');
 
 // read the filename from the command line arguments
 var fileName = process.argv[2];
@@ -17,7 +18,9 @@ fs.readFile(fileName, function(err, data) {
 
   // use our plugin to transform the source
   var out = babel.transform(src, {
-    plugins: [modulePlugin, pipePlugin]
+    plugins: [modulePlugin, pipePlugin, [importPlugin, {
+      libraryName: 'antd'
+    }]]
   });
 
   // print the generated code to screen
