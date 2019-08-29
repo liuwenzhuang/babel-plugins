@@ -5,10 +5,13 @@ var babel = require('@babel/core');
 var modulePlugin = require('./src/modulePlugin');
 var pipePlugin = require('./src/pipePlugin');
 var importPlugin = require('./src/importPlugin');
-var splitConvertPlugin = require('./src/splitAndConvertDeclarations');
+var renamePlugin = require('./src/renamePlugin');
+var combinePlugin = require('./src/combineVariablesPlugin');
+var convertVar = require('./src/convertVar');
 
 // read the filename from the command line arguments
 var fileName = process.argv[2];
+console.log(fileName);
 
 // read the code from this file
 fs.readFile(fileName, function(err, data) {
@@ -19,9 +22,7 @@ fs.readFile(fileName, function(err, data) {
 
   // use our plugin to transform the source
   var out = babel.transform(src, {
-    plugins: [modulePlugin, pipePlugin, [importPlugin, {
-      libraryName: 'antd'
-    }], splitConvertPlugin]
+    plugins: [convertVar]
   });
 
   // print the generated code to screen
