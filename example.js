@@ -27,7 +27,7 @@ export function getUrlDetail(configId, apiKey) {
       url: '/v1/outputsubscribe/url/detail/get',
       method: 'get',
       query: {
-        email: userToken.email,
+        email: userToken?.email ?? 'liuwenzhuang@corp.netease.com',
         product: userToken.product,
         clusterid: userToken.clusterid,
         configId,

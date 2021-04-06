@@ -37,9 +37,7 @@ fs.readFile(fileName, function (err, data) {
       // plugins: [typescriptSynaxPlugin, checkNoLodashImport, removeLodashAllImport]
       plugins: [
         typescriptSynaxPlugin,
-        optionalChainingPlugin,
         dynamicImportPlugin,
-        nullishCoalescingOperatorPlugin,
         destructUserToken
       ]
       // retainLines: true
